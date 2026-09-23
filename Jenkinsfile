@@ -1,4 +1,4 @@
-pipeline 
+pipeline {
     agent any
 
     environment {
@@ -11,7 +11,7 @@ pipeline
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/divyap1571/jenkins-ci-cd.git''
+                    url: 'https://github.com/divyap1571/jenkins-ci-cd.git'
             }
         }
 
@@ -52,6 +52,7 @@ pipeline
                     bat '''
                         docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%
                         docker push %IMAGE_NAME%:%IMAGE_TAG%
+                        
                     '''
                 }
             }
